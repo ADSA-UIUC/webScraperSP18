@@ -32,23 +32,22 @@ from CNN_Parser.ParseFullArticle import *
 base_search_url = "https://www.cnn.com/search/?"
 
 def main():
+    # Sets path used by selenium.
+    # This will throw an error...
     os.environ["PATH"] = "/Users/alexandregeubelle/Desktop/Alexandre Geubelle/Coding/CNNParser"
     browser = webdriver.Firefox()
 
-    #url = "https://www.cnn.com/2018/02/09/app-news-section/what-happened-this-week-in-anything-but-politics-trnd/index.html"
-    #url = "https://www.cnn.com/videos/us/2015/04/15/orig-spacex-falcon-9-launch-tip-landing.cnn/video/playlists/spacex/"
-    url = "http://money.cnn.com/2018/03/01/technology/elon-musk-china-infrastructure-tweet/index.html"
-    soup = get_url_soup(url, browser=browser)
-    #ParseFullArticle(soup)
-    print(str(ParseFullArticleMoney(soup)))
+    # To get info on a full article:
+    # url = "http://money.cnn.com/2018/03/01/technology/elon-musk-china-infrastructure-tweet/index.html"
+    # soup = get_url_soup(url, browser=browser)
+    # ParseFullArticle(soup)
+    # print(str(ParseFullArticleMoney(soup)))
 
+    # To get headlines between a certain time frame.
     #parse_headlines_by_search_term("Elon Musk", "03/02/2018", "01/01/2017", max_articles=15, browser=browser)
 
-    # headlines = list()
-    # headlines.extend(parse_recent_headlines_by_search_term("Elon Musk", 25, browser))
-    #
-    # for headline in headlines:
-    #     print(str(headline))
+    # To get recent headlines
+    # parse_recent_headlines_by_search_term("Elon Musk", 25, browser)) # Most recent 25 headlines.
 
     browser.quit()
 

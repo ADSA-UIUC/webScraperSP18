@@ -23,6 +23,15 @@ Has a section of metadata like follows.
 '''
 
 def ParseFullArticle(soup):
+    # CNN has two types of html that change depending on the URL:
+    baseObj = ParseFullArticleCNNBase(soup)
+    moneyObj = ParseFullArticleMoney(soup)
+    if  baseObj.article_title is not None:
+        return baseObj
+    else:
+        return moneyObj
+
+def ParseFullArticleCNNBase(soup):
     author_soup = soup.find("meta", {"itemprop": "author"})
     date_published_soup = soup.find("meta", {"itemprop": "datePublished"})
     headline_soup = soup.find("meta", {"itemprop": "headline"})
