@@ -53,7 +53,7 @@ def main():
     browser.quit()
 
 
-def get_headlines(num_headlines, browser=None):
+def get_headlines(num_headlines=None, browser=None):
     url = "https://www.cnn.com/"
     soup = get_url_soup(url, browser=browser)
     counter = 0
@@ -66,7 +66,7 @@ def get_headlines(num_headlines, browser=None):
         if "https://www.cnn.com" not in url:
             url = "https://www.cnn.com" + url
         urls.append(url)
-        if counter >= num_headlines:
+        if num_headlines is not None and counter >= num_headlines:
             break
 
     for i in range(len(urls)):
