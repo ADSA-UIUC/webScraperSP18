@@ -1,6 +1,6 @@
 import bs4
 import datetime
-from NewsArticleHeadline import NewsArticleHeadline
+from CNN_Parser.NewsArticleHeadline import NewsArticleHeadline
 
 # https://stackoverflow.com/questions/14257717/python-beautifulsoup-wildcard-attribute-id-search
 #sections = soup.find_all("tr", {"id" : lambda L: L and L.startswith('uid')})

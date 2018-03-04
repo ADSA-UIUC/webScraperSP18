@@ -5,8 +5,9 @@ import datetime
 import urllib.parse
 from selenium import webdriver
 import os
-from ParseSearchResult import *
-from NewsArticleHeadline import NewsArticleHeadline
+from CNN_Parser.ParseSearchResult import *
+from CNN_Parser.NewsArticleHeadline import NewsArticleHeadline
+from CNN_Parser.ParseFullArticle import *
 '''
     Basc Information:
     1) This is a parser to parse a group of articles from CNN.com
@@ -34,7 +35,14 @@ def main():
     os.environ["PATH"] = "/Users/alexandregeubelle/Desktop/Alexandre Geubelle/Coding/CNNParser"
     browser = webdriver.Firefox()
 
-    parse_headlines_by_search_term("Elon Musk", "03/02/2018", "01/01/2017", max_articles=15, browser=browser)
+    #url = "https://www.cnn.com/2018/02/09/app-news-section/what-happened-this-week-in-anything-but-politics-trnd/index.html"
+    #url = "https://www.cnn.com/videos/us/2015/04/15/orig-spacex-falcon-9-launch-tip-landing.cnn/video/playlists/spacex/"
+    url = "http://money.cnn.com/2018/03/01/technology/elon-musk-china-infrastructure-tweet/index.html"
+    soup = get_url_soup(url, browser=browser)
+    #ParseFullArticle(soup)
+    print(str(ParseFullArticleMoney(soup)))
+
+    #parse_headlines_by_search_term("Elon Musk", "03/02/2018", "01/01/2017", max_articles=15, browser=browser)
 
     # headlines = list()
     # headlines.extend(parse_recent_headlines_by_search_term("Elon Musk", 25, browser))
