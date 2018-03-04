@@ -4,6 +4,7 @@ import json
 import datetime
 import os
 import bs4
+import NewsArticle
 
 from BBC_Parser.ParseSearchResult import *
 
@@ -27,10 +28,16 @@ from BBC_Parser.ParseSearchResult import *
 # https://www.cnn.com/profiles/alanna-petroff
 
 base_search_url = "https://www.bbc.co.uk/search?"
+homepage_url = "http://www.bbc.com"
 
 def main():
-    url = create_url("elon musk", 2)
-    articles = parse_search_result(get_url_soup(url))
+    # url = create_url("elon musk", 2)
+    # articles = get_search_result(get_url_soup(url))
+    articles =  get_homepage_articles(get_url_soup(homepage_url))
+    for article in articles:
+        print(article.title)
+
+
 
 # Takes:
 # search string 
