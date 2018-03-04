@@ -73,10 +73,14 @@ def handle_session_end_request():
 def create_headings_response(s):
     # Here is where you add more news sources and can generate response strings
     # from data or article objects or stuff.
-    if s == "CNN":
-        return "The top news from " + s + " is Democrat stuff and other stuff"
-    elif s == "fox":
-        return "The top news from " + s + " is Rebublican stuff and other stuff"
+    headlines_dictionary = { \
+        "CNN": ["Boo trump", "Yuck trump", "BAN GUNS"],\
+        "fox": ["GO trump", "Hooray trump", "Yay guns"],\
+        "ESPN": ["Basketball", "Soccer", "Nascar"],\
+        }
+    if s in headlines_dictionary:
+        return "The top headlines from " + s + " are " \
+        + ", ".join(headlines_dictionary[s])
     else:
         return "I am sorry, I do not recognize " + s
 
@@ -120,6 +124,7 @@ def get_headlines(intent, session):
 #    # understood, the session will end.
 #    return build_response(session_attributes, build_speechlet_response(
 #        intent['name'], speech_output, reprompt_text, should_end_session))
+
 # --------------- Events ------------------
 
 def on_session_started(session_started_request, session):
