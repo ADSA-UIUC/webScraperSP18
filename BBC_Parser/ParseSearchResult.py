@@ -2,7 +2,6 @@ import datetime
 
 from NewsArticle import NewsArticle
 
-
 def get_homepage_articles(soup):
     homepage_headline_class_tag = "block-link__overlay-link"
 
@@ -13,11 +12,11 @@ def get_homepage_articles(soup):
     for i in range(20):
         result = headlines[i]
         news_article = NewsArticle()
+
         news_article.title = result.string.strip()
         news_article.url = result['href']
         news_article.source = "BBC"
         articles.append(news_article)
-
     return articles
 
 
@@ -28,7 +27,6 @@ def get_search_result(soup):
     headlines_class_tag = "headline"
     footer_date_tag = "flags btm"
     date_class_tag = "display-date"
-    text_body_class_tag = ""
 
     search_results = soup.find("ol", {"class": search_result_class_tag}).find_all("li")
 
