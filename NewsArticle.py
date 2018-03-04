@@ -1,5 +1,5 @@
 
-class Article:
+class NewsArticle:
 	#The title of the article
 	title = ""
 
@@ -31,8 +31,9 @@ class Article:
 	popularity_value = 0 #Ignore for now
 
 	#Initializes standard parameters for the date object
-	def __init__(self, aTitle, aTags, aDate, aSource, aUrl, aAuthor, aText, aImage_desc):
-		self.title = atitle
+	def __init__(self, aTitle = None, aTags = None, aDate = None, aSource = None,
+				 aUrl = None, aAuthor = None, aText = None, aImage_desc = None):
+		self.title = aTitle
 		self.tags = aTags
 		self.date = aDate
 		self.source = aSource
