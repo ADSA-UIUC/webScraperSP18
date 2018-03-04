@@ -5,8 +5,9 @@ import datetime
 import urllib.parse
 from selenium import webdriver
 import os
-from ParseSearchResult import *
-from NewsArticleHeadline import NewsArticleHeadline
+from CNN_Parser.ParseSearchResult import *
+from CNN_Parser.NewsArticleHeadline import NewsArticleHeadline
+from CNN_Parser.ParseFullArticle import *
 '''
     Basc Information:
     1) This is a parser to parse a group of articles from CNN.com
@@ -31,18 +32,48 @@ from NewsArticleHeadline import NewsArticleHeadline
 base_search_url = "https://www.cnn.com/search/?"
 
 def main():
+    # Sets path used by selenium.
+    # This will throw an error...
     os.environ["PATH"] = "/Users/alexandregeubelle/Desktop/Alexandre Geubelle/Coding/CNNParser"
     browser = webdriver.Firefox()
 
-    parse_headlines_by_search_term("Elon Musk", "03/02/2018", "01/01/2017", max_articles=15, browser=browser)
+    get_headlines(10, browser=browser)
+    # To get info on a full article:
+    # url = "http://money.cnn.com/2018/03/01/technology/elon-musk-china-infrastructure-tweet/index.html"
+    # soup = get_url_soup(url, browser=browser)
+    # ParseFullArticle(soup)
+    # print(str(ParseFullArticleMoney(soup)))
 
-    # headlines = list()
-    # headlines.extend(parse_recent_headlines_by_search_term("Elon Musk", 25, browser))
-    #
-    # for headline in headlines:
-    #     print(str(headline))
+    # To get headlines between a certain time frame.
+    #parse_headlines_by_search_term("Elon Musk", "03/02/2018", "01/01/2017", max_articles=15, browser=browser)
+
+    # To get recent headlines
+    # parse_recent_headlines_by_search_term("Elon Musk", 25, browser)) # Most recent 25 headlines.
 
     browser.quit()
+
+
+def get_headlines(num_headlines, browser=None):
+    url = "https://www.cnn.com/"
+    soup = get_url_soup(url, browser=browser)
+    counter = 0
+    headlines = list()
+    urls = list()
+    for h3_soup in soup.find_all("h3",{"class": "cd__headline"}):
+        counter += 1
+        headlines.append(h3_soup.find("span", {"class":"cd__headline-text"}).get_text())
+        url = h3_soup.find("a")["href"]
+        if "https://www.cnn.com" not in url:
+            url = "https://www.cnn.com" + url
+        urls.append(url)
+        if counter >= num_headlines:
+            break
+
+    for i in range(len(urls)):
+        print(str(urls[i]))
+        print(str(headlines[i]))
+
+    return headlines
 
 
 def parse_recent_headlines_by_search_term(search_string, max_articles, browser=None):

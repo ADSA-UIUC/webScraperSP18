@@ -1,6 +1,5 @@
-import datetime
 
-class Article:
+class NewsArticle:
 	#The title of the article
 	title = ""
 
@@ -29,10 +28,11 @@ class Article:
 	summary = "" #To be completed later
 
 	#A popularity ranking for the article. Decide what this means at a later date
-	popularity_value = 0 #Ignore for now  
+	popularity_value = 0 #Ignore for now
 
 	#Initializes standard parameters for the date object
-	def __init__(self, aTitle, aTags, aDate, aSource, aUrl, aAuthor, aText, aImage_desc):
+	def __init__(self, aTitle = None, aTags = None, aDate = None, aSource = None,
+				 aUrl = None, aAuthor = None, aText = None, aImage_desc = None):
 		self.title = aTitle
 		self.tags = aTags
 		self.date = aDate
@@ -42,15 +42,4 @@ class Article:
 		self.text = aText
 		self.image_desc = aImage_desc
 
-	def setDate(self, year, month, day):
-		self.date = datetime.date(year, month, day)
-
-	#Parses a date in the format mm-dd-YYYY and assigns it to date
-	def parseDate(self, dateString):
-		dateString.replace('\W', '-')
-		self.date = datetime.strptime(dateString, '%m-%d-%Y')
-		
-okay = Article()
-okay.setDate(1999, 5, 3)
-okay.parseDate("04-02-1999")
-print(okay.date)
+	

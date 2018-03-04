@@ -21,15 +21,5 @@ class NewsArticle:
     author = None
     article_text = None
     image_descriptions = None
-
-    def __str__(self):
-        output_str = ""
-        output_str += "Headline: " + str(self.article_title) + "\n"
-        output_str += "Date: " + str(self.date) + "\n"
-        output_str += "Article Text: " + str(self.article_text) + "\n"
-        output_str += "Tags: " + str(self.tags) + "\n"
-        output_str += "Image Descriptions: " + str(self.image_descriptions) + "\n"
-        output_str += "Source: " + str(self.source) + "\n"
-        output_str += "Link: " + str(self.url) + "\n"
-        return output_str
-
+    popularity_value = None
+    summary = None
