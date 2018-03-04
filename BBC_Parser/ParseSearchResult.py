@@ -1,6 +1,6 @@
 import datetime
 
-import NewsArticle
+from NewsArticle import Article
 
 
 # https://stackoverflow.com/questions/14257717/python-beautifulsoup-wildcard-attribute-id-search
@@ -17,7 +17,7 @@ def parse_search_result(soup):
     articles = list()
 
     for result in search_results:
-        news_article = NewsArticle.NewsArticle()
+        news_article = Article()
 
         result = result.find("div")
         result_headline = result.find("h1", {"itemprop": headlines_class_tag})
