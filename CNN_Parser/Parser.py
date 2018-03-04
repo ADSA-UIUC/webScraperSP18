@@ -37,6 +37,7 @@ def main():
     os.environ["PATH"] = "/Users/alexandregeubelle/Desktop/Alexandre Geubelle/Coding/CNNParser"
     browser = webdriver.Firefox()
 
+    get_headlines(10, browser=browser)
     # To get info on a full article:
     # url = "http://money.cnn.com/2018/03/01/technology/elon-musk-china-infrastructure-tweet/index.html"
     # soup = get_url_soup(url, browser=browser)
@@ -50,6 +51,29 @@ def main():
     # parse_recent_headlines_by_search_term("Elon Musk", 25, browser)) # Most recent 25 headlines.
 
     browser.quit()
+
+
+def get_headlines(num_headlines, browser=None):
+    url = "https://www.cnn.com/"
+    soup = get_url_soup(url, browser=browser)
+    counter = 0
+    headlines = list()
+    urls = list()
+    for h3_soup in soup.find_all("h3",{"class": "cd__headline"}):
+        counter += 1
+        headlines.append(h3_soup.find("span", {"class":"cd__headline-text"}).get_text())
+        url = h3_soup.find("a")["href"]
+        if "https://www.cnn.com" not in url:
+            url = "https://www.cnn.com" + url
+        urls.append(url)
+        if counter >= num_headlines:
+            break
+
+    for i in range(len(urls)):
+        print(str(urls[i]))
+        print(str(headlines[i]))
+
+    return headlines
 
 
 def parse_recent_headlines_by_search_term(search_string, max_articles, browser=None):
