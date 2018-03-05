@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5673fa6-005c-411b-b000-32b3d96c511d" name="Default" comment="">
-<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/web-scraper.iml" afterPath="$PROJECT_DIR$/.idea/web-scraper.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-=======
       <change type="MOVED" beforePath="$PROJECT_DIR$/Article/NewsArticle.py" afterPath="$PROJECT_DIR$/NewsArticle.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/web-scraper.iml" afterPath="$PROJECT_DIR$/.idea/web-scraper.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CNN_Parser/Parser.py" afterPath="$PROJECT_DIR$/CNN_Parser/Parser.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CNN_Parser/geckodriver.log" afterPath="$PROJECT_DIR$/CNN_Parser/geckodriver.log" />
-=======
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BBC_Parser/ParseSearchResult.py" afterPath="$PROJECT_DIR$/BBC_Parser/ParseSearchResult.py" />
->>>>>>> 04f7abeafe1f8ecc3c47b7d337e057e2f9ab47ed
->>>>>>> 7c520fd5c846f7c16d778720d1220908a502cccc
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,24 +29,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-<<<<<<< HEAD
-      <file leaf-file-name="Article.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ESPN/Article.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
+      <file leaf-file-name="Article.py" pinned="false" current-in-tab="false"/>
+        <entry file="file://$PROJECT_DIR$/ESPN/Article.py"/>
+          <provider selected="true" editor-type-id="text-editor"/>
+            <state relative-caret-position="275"/>
               <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
               <folding />
-=======
       <file leaf-file-name="Parser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CNN_Parser/Parser.py">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
             <state relative-caret-position="240">
               <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-=======
             <state relative-caret-position="505">
-              <caret line="60" column="42" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
->>>>>>> 04f7abeafe1f8ecc3c47b7d337e057e2f9ab47ed
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -110,7 +98,6 @@
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
->>>>>>> 7c520fd5c846f7c16d778720d1220908a502cccc
             </state>
           </provider>
         </entry>
@@ -118,13 +105,10 @@
       <file leaf-file-name="NewsArticle.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Article/NewsArticle.py">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
             <state relative-caret-position="175">
               <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-=======
             <state relative-caret-position="400">
               <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
->>>>>>> 7c520fd5c846f7c16d778720d1220908a502cccc
               <folding />
             </state>
           </provider>
