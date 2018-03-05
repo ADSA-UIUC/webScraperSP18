@@ -5,3 +5,5 @@
 *.sql
 *.sqlite
 *.swp
+*.xml
+*.iml
