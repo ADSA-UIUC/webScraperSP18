@@ -4,6 +4,8 @@ import json
 import datetime
 import urllib.parse
 
+from NewsArticle import NewsArticle
+
 '''
     Basc Information:
     1) This is a parser to parse a group of articles from CNN.com
@@ -45,7 +47,8 @@ def get_headlines(num_headlines=None):
         if h3_soup is None:
             continue
         counter += 1
-        headlines.append(h3_soup.get_text().strip())
+        title = (h3_soup.get_text().strip())
+        headlines.append(NewsArticle(aTitle=title))
         if num_headlines is not None and counter >= num_headlines:
             break
 
