@@ -90,7 +90,6 @@ def create_headings_response(s, t = None):
         "fox": ["GO trump", "Hooray trump", "Yay guns"],
         "ESPN": ["Basketball", "Soccer", "Nascar"],
         }
-    
     if s in headlines_dictionary and t is None:
         return "The top headlines from " + s + " are " \
         + ", ".join(headlines_dictionary[s])
