@@ -25,7 +25,7 @@ class theGuardian :
 				continue
 			print ("\n")
 
-		print self.headlineList
+		print (self.headlineList)
 
 a=theGuardian()
 a.returnHeadlines()
