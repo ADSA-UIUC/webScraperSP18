@@ -1,4 +1,5 @@
 list = TheDailyIllini.return_article_objects()
+
 for article in list:
     print(article)
 

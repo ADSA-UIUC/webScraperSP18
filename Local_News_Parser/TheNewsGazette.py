@@ -31,6 +31,7 @@ class TheNewsGazette:
 
     @staticmethod
     def return_article(article_url):
+
         article = NewsArticle("The News Gazette")
         article.article_title = TheNewsGazette.return_article_headline(article_url)
         article.url = TheNewsGazette.return_article_url(article_url)
@@ -38,6 +39,7 @@ class TheNewsGazette:
         article.tags = TheNewsGazette.return_article_tags(article_url)
         article.author = TheNewsGazette.return_article_author(article_url)
         article.article_text = TheNewsGazette.return_article_text(article_url)
+        
         return article
 
     @staticmethod

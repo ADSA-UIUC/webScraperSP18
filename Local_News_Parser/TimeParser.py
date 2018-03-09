@@ -9,6 +9,7 @@ class TimeParser:
     #TODO: try replacing this function with Python's date-time library.
     @staticmethod
     def get_month_from_text(month_string):
+
         month_to_mm = {
             "January":"01",
             "February":"02",
@@ -27,4 +28,5 @@ class TimeParser:
         for month, month_num in month_to_mm.items():
             if (month_string.lower() == month.lower()):
                 return month_num
+                
         return None

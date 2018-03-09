@@ -19,6 +19,7 @@ class NewsArticle:
     '''
 
     def __init__(self, source_name):
+
         self.article_title = None
         self.tags = []
         self.date = None
@@ -29,7 +30,9 @@ class NewsArticle:
         self.image_descriptions = None
 
     def __str__(self):
+
         output_str = ""
+
         output_str += "Headline: " + str(self.article_title) + "\n"
         output_str += "Date: " + str(self.date) + "\n"
         if (self.author is not None):
@@ -41,4 +44,5 @@ class NewsArticle:
         output_str += "Image Descriptions: " + str(self.image_descriptions) + "\n"
         output_str += "Source: " + str(self.source) + "\n"
         output_str += "Link: " + str(self.url) + "\n"
+        
         return output_str
