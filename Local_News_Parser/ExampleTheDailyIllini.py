@@ -3,6 +3,9 @@ for article in list:
     print(article)
 
 '''
+Examples for The Daily Illini:
+
+###
 Headline: GEO protesters occupy President Killeen’s office, intend to stay until contract is reached
 Date: 03/07/18
 Author: Andrea Flores
