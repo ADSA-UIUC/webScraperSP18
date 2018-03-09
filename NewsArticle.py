@@ -16,14 +16,16 @@ class NewsArticle:
 	#articles - list of article objects
 	#sourceName - text string of the articles source i.e. [article].source
 	@staticmethod
-	def pickleArticles(articles, sourceName):
+	def dumpArticles(articles, sourceName):
 		with open("{}Articles.dat".format(sourceName), "wb") as f:
-			pickle.dump(articles, f)
+			json.dump(articles, f)
 
 	@staticmethod
-	def unpickleArticles(sourceName):
+	def loadArticles(sourceName):
 		with open("{}Articles.dat".format(sourceName), "rb") as f:
-			return pickle.load(f)
+			return json.load(f)
 
-
-	
+	@staticmethod
+	def dumpAllArticles():
+		
+		dumpArticles()
