@@ -272,3 +272,49 @@ JavaScript warning: https://widgets.lendingtree.com/_Incapsula_Resource?SWJIYLWA
 [Child 46702, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /builds/worker/workspace/build/src/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
 [Child 46702, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /builds/worker/workspace/build/src/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
 [Child 46702, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /builds/worker/workspace/build/src/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+1520202422775	geckodriver	INFO	geckodriver 0.19.1
+1520202422797	geckodriver	INFO	Listening on 127.0.0.1:55856
+1520202424244	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-profile" "/var/folders/jd/lgzdg3wn3dqff7q6k9fpc6nw0000gn/T/rust_mozprofile.YbWHEcPxasxG"
+1520202426611	Marionette	INFO	Enabled via --marionette
+2018-03-04 16:27:09.156 plugin-container[47738:1244779] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0xa22f, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2018-03-04 16:27:09.898 plugin-container[47739:1244843] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x9e33, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+1520202430445	Marionette	INFO	Listening on port 55871
+1520202430548	Marionette	WARN	TLS certificate errors will be ignored for this session
+1520203189709	geckodriver	INFO	geckodriver 0.19.1
+1520203189721	geckodriver	INFO	Listening on 127.0.0.1:59331
+1520203191125	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-profile" "/var/folders/jd/lgzdg3wn3dqff7q6k9fpc6nw0000gn/T/rust_mozprofile.YKFxMy8tuDmZ"
+1520203193480	Marionette	INFO	Enabled via --marionette
+2018-03-04 16:39:55.919 plugin-container[47923:1250664] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0xa22f, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2018-03-04 16:39:56.754 plugin-container[47924:1250726] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x9f3b, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+1520203197257	Marionette	INFO	Listening on port 59350
+1520203197359	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 47923, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /builds/worker/workspace/build/src/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+1520203408204	geckodriver	INFO	geckodriver 0.19.1
+1520203408219	geckodriver	INFO	Listening on 127.0.0.1:60574
+1520203409458	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-profile" "/var/folders/jd/lgzdg3wn3dqff7q6k9fpc6nw0000gn/T/rust_mozprofile.vskEPMhsHN5s"
+1520203411528	Marionette	INFO	Enabled via --marionette
+2018-03-04 16:43:34.281 plugin-container[48083:1254847] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0xa22f, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2018-03-04 16:43:35.174 plugin-container[48085:1254913] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0xa137, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+1520203415632	Marionette	INFO	Listening on port 60589
+1520203415768	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 48083, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /builds/worker/workspace/build/src/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+[Child 48083, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /builds/worker/workspace/build/src/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+[Child 48083, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /builds/worker/workspace/build/src/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+[Child 48083, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /builds/worker/workspace/build/src/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+1520205290094	geckodriver	INFO	geckodriver 0.19.1
+1520205290116	geckodriver	INFO	Listening on 127.0.0.1:52151
+1520205291547	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-profile" "/var/folders/jd/lgzdg3wn3dqff7q6k9fpc6nw0000gn/T/rust_mozprofile.xK1rD04g4R2T"
+1520205293986	Marionette	INFO	Enabled via --marionette
+2018-03-04 17:14:56.576 plugin-container[48988:1277289] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0xa22f, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2018-03-04 17:14:57.318 plugin-container[48989:1277351] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x9e37, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+1520205297882	Marionette	INFO	Listening on port 52166
+1520205297949	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 48988, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /builds/worker/workspace/build/src/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
