@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
 
+from NewsArticle import NewsArticle
 
-
+#does what it says
 def return_front_espn_headlines():
     list_of_headlines = {}
     source = "https://espn.com"
@@ -12,4 +13,10 @@ def return_front_espn_headlines():
     find_content = soup.find_all("div", class_ = "contentItem__contentWrapper")
     for tag in find_content:
         list_of_headlines.append(tag.h1.title)
-    return list_of_headlines
+
+    list_of_objects = {}
+    for headline in list_of_headlines:
+        temp = NewsArticle(headline,None,None,source,None,None,None,None)
+        list_of_headlines.append(temp)
+
+    return list_of_objects
