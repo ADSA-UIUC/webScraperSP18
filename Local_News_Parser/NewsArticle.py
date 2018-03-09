@@ -32,7 +32,10 @@ class NewsArticle:
         output_str = ""
         output_str += "Headline: " + str(self.article_title) + "\n"
         output_str += "Date: " + str(self.date) + "\n"
-        output_str += "Author: " + (self.author[1]) + " " + (self.author[0]) +"\n"
+        if (self.author is not None):
+            output_str += "Author: " + (self.author[1]) + " " + (self.author[0]) +"\n"
+        else:
+            output_str += "Author: None" + "\n"
         output_str += "Article Text: " + str(self.article_text) + "\n"
         output_str += "Tags: " + str(self.tags) + "\n"
         output_str += "Image Descriptions: " + str(self.image_descriptions) + "\n"
