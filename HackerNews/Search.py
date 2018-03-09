@@ -6,7 +6,7 @@ import os
 import bs4
 import NewsArticle
 
-from BBC_Parser.ParseSearchResult import *
+from HackerNews.ParseSearchResult import *
 
 '''
     Basc Information:
@@ -27,27 +27,24 @@ from BBC_Parser.ParseSearchResult import *
 # http://money.cnn.com/author/kaya-yurieff/index.html
 # https://www.cnn.com/profiles/alanna-petroff
 
-base_search_url = "https://www.bbc.co.uk/search?"
-homepage_url = "http://www.bbc.com"
+
+homepage_url = "https://news.ycombinator.com/"
 
 def main():
-    # url = create_url("elon musk", 2)
-    # articles = get_search_result(get_url_soup(url))
-    articles =  get_homepage_articles(get_url_soup(homepage_url))
+    articles = get_homepage_articles(get_url_soup(homepage_url))
+    print(articles)
     for article in articles:
         print(article.title)
 
-
-
-# Takes:
-# search string 
-# start_index article number to start at
-def create_url(search_string, page):
-    params = {}
-    params["q"] = search_string
-    params["page"] = page
-
-    return base_search_url + urllib.parse.urlencode(params)
+# # Takes:
+# # search string
+# # start_index article number to start at
+# def create_url(search_string, page):
+#     params = {}
+#     params["q"] = search_string
+#     params["page"] = page
+#
+#     return base_search_url + urllib.parse.urlencode(params)
 
 
 def get_url_soup(url, browser=None):
