@@ -18,14 +18,18 @@ class NewsArticle:
 	@staticmethod
 	def dumpArticles(articles, sourceName):
 		with open("{}Articles.dat".format(sourceName), "wb") as f:
-			json.dump(articles, f)
+			pickle.dump(articles, f)
 
 	@staticmethod
 	def loadArticles(sourceName):
 		with open("{}Articles.dat".format(sourceName), "rb") as f:
-			return json.load(f)
+			return pickle.load(f)
 
 	@staticmethod
 	def dumpAllArticles():
-		
+		CNNarts
+		BBCarts
+		CNETarts
+
+
 		dumpArticles()
