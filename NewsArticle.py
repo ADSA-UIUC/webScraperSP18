@@ -1,3 +1,4 @@
+import pickle
 
 class NewsArticle:
 	#The title of the article
@@ -41,5 +42,18 @@ class NewsArticle:
 		self.author = aAuthor
 		self.text = aText
 		self.image_desc = aImage_desc
+
+	#articles - list of article objects
+	#sourceName - text string of the articles source
+	@staticmethod
+	def pickleArticles(articles, sourceName):
+		with open("{}Articles.dat".format(sourceName), "wb") as f:
+			pickle.dump(articles, f)
+
+	@staticmethod
+	def unpickleArticles(sourceName):
+		with open("{}Articles.dat".format(sourceName), "rb") as f:
+			return pickle.load(f)
+
 
 	
