@@ -2,11 +2,15 @@ from bs4 import BeautifulSoup
 import requests
 import datetime
 
+from NewsArticle import NewsArticle
 
 
 def run_entire_thing(espn_link):
     espn = requests.get(espn_link).text
     soup = BeautifulSoup(espn, "html5lib")
+
+
+
 
     def get_source():
         return "ESPN"
@@ -24,7 +28,8 @@ def run_entire_thing(espn_link):
         author_and_date = list()
         info = (soup.find_all("div",class_ = "article-meta")[0])
 
-        author = next(info.ul.li.contents[1].children)
+        author = info.ul.li.contents[1]
+        print(author)
         date = info.span.span.string
         if(check_if_today(date)):
             date = datetime.date.today()
@@ -61,4 +66,8 @@ def run_entire_thing(espn_link):
                 return False
         return True
 
-run_entire_thing("http://www.espn.com/nfl/draft2018/story/_/id/22645316/shaquem-griffin-central-florida-runs-fastest-lb-40-more-decade")
+    the_information = NewsArticle(get_title(),get_tags(),get_author_and_date()[1],
+                                  get_source(),get_url(),get_author_and_date()[0],
+                                  return_article_contents(),get_image_caption())
+    return the_information
+print(run_entire_thing("http://www.espn.com/boxing/story/_/id/22678784/golden-boy-espn-front-family-ronny-rios-looking-get-closer-title-opportunity"))

@@ -6,8 +6,8 @@ import urllib.parse
 from selenium import webdriver
 import os
 from CNN_Parser.ParseSearchResult import *
-from CNN_Parser.NewsArticleHeadline import NewsArticleHeadline
 from CNN_Parser.ParseFullArticle import *
+from NewsArticle import NewsArticle
 '''
     Basc Information:
     1) This is a parser to parse a group of articles from CNN.com
@@ -53,7 +53,14 @@ def main():
     browser.quit()
 
 
-def get_headlines(num_headlines, browser=None):
+def get_front_page_headlines(num_headlines):
+    browser = webdriver.Firefox()
+    headlines = get_headlines(num_headlines=num_headlines, browser=browser)
+    browser.quit()
+    return headlines
+
+
+def get_headlines(num_headlines=None, browser=None):
     url = "https://www.cnn.com/"
     soup = get_url_soup(url, browser=browser)
     counter = 0
@@ -61,17 +68,14 @@ def get_headlines(num_headlines, browser=None):
     urls = list()
     for h3_soup in soup.find_all("h3",{"class": "cd__headline"}):
         counter += 1
-        headlines.append(h3_soup.find("span", {"class":"cd__headline-text"}).get_text())
+        headline = h3_soup.find("span", {"class":"cd__headline-text"}).get_text()
+        headlines.append(NewsArticle(aTitle=headline))
         url = h3_soup.find("a")["href"]
         if "https://www.cnn.com" not in url:
             url = "https://www.cnn.com" + url
         urls.append(url)
-        if counter >= num_headlines:
+        if num_headlines is not None and counter >= num_headlines:
             break
-
-    for i in range(len(urls)):
-        print(str(urls[i]))
-        print(str(headlines[i]))
 
     return headlines
 

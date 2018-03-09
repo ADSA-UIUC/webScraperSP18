@@ -7,7 +7,8 @@ For additional samples, visit the Alexa Skills Kit Getting Started guide at
 http://amzn.to/1LGWsLG
 """
 
-from __future__ import print_function
+# uncomment for python2.7
+# from __future__ import print_function
 
 
 # --------------- Helpers that build all of the responses ----------------------
@@ -70,19 +71,56 @@ def handle_session_end_request():
     return build_response({}, build_speechlet_response(
         card_title, speech_output, None, should_end_session))
 
-def create_headings_response(s):
+def parse_recent_headlines_by_search_term_using_source(s, t):
+    search_terms_and_src = {
+        "apple": {"CNN": ["Apple did well", "Go apple"],
+        "fox": ["Apple did not so well", "Apple did cool"]},
+        "guns": {"CNN": ["Guns are bad", "Boo guns"],
+        "fox": ["guns are good", "Go guns"]},
+        }
+    return ", ".join(search_terms_and_src[t][s])
+
+def create_headings_response(s, t = None):
     # Here is where you add more news sources and can generate response strings
     # from data or article objects or stuff.
-    headlines_dictionary = { \
-        "CNN": ["Boo trump", "Yuck trump", "BAN GUNS"],\
-        "fox": ["GO trump", "Hooray trump", "Yay guns"],\
-        "ESPN": ["Basketball", "Soccer", "Nascar"],\
+    
+    # static for now but can be changed to dynamic content
+    headlines_dictionary = {
+        "CNN": ["Boo trump", "Yuck trump", "BAN GUNS"],
+        "fox": ["GO trump", "Hooray trump", "Yay guns"],
+        "ESPN": ["Basketball", "Soccer", "Nascar"],
         }
-    if s in headlines_dictionary:
+    
+    if s in headlines_dictionary and t is None:
         return "The top headlines from " + s + " are " \
         + ", ".join(headlines_dictionary[s])
+    elif s in headlines_dictionary and t is not None:
+        return "The headlines from " + s + " that match the term " + t + \
+        " are " + parse_recent_headlines_by_search_term_using_source(s, t)
     else:
         return "I am sorry, I do not recognize " + s
+
+def search_for_headlines(intent, session):
+    """ Sets the reply for news headings.
+    """
+
+    card_title = intent['name']
+    session_attributes = {}
+    should_end_session = False
+
+    if 'NewsSource' in intent['slots'] and 'searchTerm' in intent["slots"]:
+        source = intent['slots']['NewsSource']['value']
+        term = intent['slots']['searchTerm']['value']
+        speech_output = create_headings_response(source, term)
+        reprompt_text = "Thanks for asking. Feel free to ask again."
+    else:
+        speech_output = "I'm not sure what source you chose. " \
+                        "Please try again."
+        reprompt_text = "I'm not sure what source you chose. " \
+                        "You can ask me for headlines by saying, " \
+                        "what are the headlines from CNN."
+    return build_response(session_attributes, build_speechlet_response(
+        card_title, speech_output, reprompt_text, should_end_session))
 
 def get_headlines(intent, session):
     """ Sets the reply for news headings.
@@ -157,6 +195,8 @@ def on_intent(intent_request, session):
     # Dispatch to your skill's intent handlers
     if intent_name == "GiveMeTopHeadlines":
         return get_headlines(intent, session)
+    elif intent_name == "SearchHeadlines":
+        return search_for_headlines(intent, session)
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
