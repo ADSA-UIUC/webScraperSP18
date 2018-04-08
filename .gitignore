@@ -1,9 +1,0 @@
-# Ignored files
-*.pyc
-.idea/*
-*.log
-*.sql
-*.sqlite
-*.swp
-*.xml
-*.iml
