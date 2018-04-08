@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 import pickle
 import json
 # from BBC_Parser import Search as bbc
 # from Cnet_Parser import Parser as cnet
 # from Reddit import newsHeadlines as red
 # from HackerNews import Search as hack
+=======
+
+>>>>>>> refs/remotes/origin/reeeeeet
 
 
 class NewsArticle:
@@ -19,6 +23,7 @@ class NewsArticle:
 		self.text = aText #string - The text body of the article
 		self.image_desc = aImage_desc #string - A list of image descriptions - one entry per image
 
+<<<<<<< HEAD
 	#articles - list of article objects
 	#sourceName - text string of the articles source i.e. [article].source
 	@staticmethod
@@ -50,3 +55,6 @@ if __name__=="__main__":
     print([a.title for a in A[:5]])
     A = NewsArticle.loadArticles("cnet")
     print([a.title for a in A[:5]])
+=======
+	#
+>>>>>>> refs/remotes/origin/reeeeeet
