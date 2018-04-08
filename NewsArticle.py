@@ -1,8 +1,9 @@
 import pickle
-from BBC_Parser import Search as bbc
-from Cnet_Parser import Parser as cnet
-from Reddit import newsHeadlines as red
-from HackerNews import Search as hack
+import json
+# from BBC_Parser import Search as bbc
+# from Cnet_Parser import Parser as cnet
+# from Reddit import newsHeadlines as red
+# from HackerNews import Search as hack
 
 
 class NewsArticle:
@@ -27,7 +28,7 @@ class NewsArticle:
 
 	@staticmethod
 	def loadArticles(sourceName):
-		with open("Headlines\{}Articles.dat".format(sourceName), "rb") as f:
+		with open("Headlines/{}Articles.dat".format(sourceName), "rb") as f:
 			return pickle.load(f)
 
 	@staticmethod
@@ -41,4 +42,11 @@ class NewsArticle:
 		for art in allArts:
 			dumpArticles(art, art[0].source)
 
-dumpAllArticles()
+#dumpAllArticles()
+if __name__=="__main__":
+    A = NewsArticle.loadArticles("cnn")
+    print([a.title for a in A[:5]])
+    A = NewsArticle.loadArticles("reddit")
+    print([a.title for a in A[:5]])
+    A = NewsArticle.loadArticles("cnet")
+    print([a.title for a in A[:5]])
