@@ -32,9 +32,11 @@ homepage_url = "https://news.ycombinator.com/"
 
 def main():
     articles = get_homepage_articles(get_url_soup(homepage_url))
-    print(articles)
+    article_titles = []
     for article in articles:
-        print(article.title)
+        article_titles.append(article.title)
+    print(article_titles)
+
 
 # # Takes:
 # # search string
@@ -46,6 +48,8 @@ def main():
 #
 #     return base_search_url + urllib.parse.urlencode(params)
 
+def retrieve_homepage_articles():
+    return get_homepage_articles(get_url_soup(homepage_url))
 
 def get_url_soup(url, browser=None):
     if browser is None:

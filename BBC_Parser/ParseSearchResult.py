@@ -1,6 +1,6 @@
 import datetime
-
 from NewsArticle import NewsArticle
+
 
 def get_homepage_articles(soup):
     homepage_headline_class_tag = "block-link__overlay-link"
