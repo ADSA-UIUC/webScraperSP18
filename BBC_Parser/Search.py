@@ -22,6 +22,7 @@ from BBC_Parser.ParseSearchResult import *
     # Had to install:
     1) beautiful soup 4
     2) urllib
+    3) python-interface
 '''
 
 # http://money.cnn.com/author/kaya-yurieff/index.html
