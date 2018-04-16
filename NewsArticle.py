@@ -1,6 +1,3 @@
-
-
-
 class NewsArticle:
 	#Initializes standard parameters for the date object
 	def __init__(self, aTitle = None, aTags = None, aDate = None, aSource = None,

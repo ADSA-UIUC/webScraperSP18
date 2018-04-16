@@ -1,6 +1,9 @@
 import datetime
-
 from NewsArticle import NewsArticle
+from NewsSource import NewsSource
+from interface import implements
+
+class BBCNewsSource (implements(NewsSource)):
 
 def get_homepage_articles(soup):
     homepage_headline_class_tag = "block-link__overlay-link"
