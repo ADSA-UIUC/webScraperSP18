@@ -28,7 +28,7 @@ def run_entire_thing(espn_link):
         author_and_date = list()
         info = (soup.find_all("div",class_ = "article-meta")[0])
 
-        author = info.ul.li.contents[1]
+        author = info.ul.li.contents[1].string
         print(author)
         date = info.span.span.string
         if(check_if_today(date)):
