@@ -1,44 +1,44 @@
-import pickle
-from BBC_Parser import Search as bbc
-from Cnet_Parser import Parser as cnet
-from Reddit import newsHeadlines as red
-from HackerNews import Search as hack
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String, VARCHAR
+
+engine = create_engine(
+    'mysql+mysqlconnector://UIUC.ADSA:uiucadsa123@adsascrape.cqnah55gg5pq.us-east-1.rds.amazonaws.com:3306/adsawebscrape')
+
+Session = sessionmaker(bind=engine)
+session = Session()
+
+Base = declarative_base()
 
 
-class NewsArticle:
-	#Initializes standard parameters for the date object
-	def __init__(self, aTitle = None, aTags = None, aDate = None, aSource = None,
-				 aUrl = None, aAuthor = None, aText = None, aImage_desc = None):
-		self.title = aTitle #string - The title of the article
-		self.tags = aTags #list of strings - The category tags on the article
-		self.date = aDate #datetime - The date the article was released
-		self.source = aSource #string - The source of the article
-		self.url = aUrl #string - Permanent link to the article
-		self.author = aAuthor #string - The author of the article as a tuple (last, first)
-		self.text = aText #string - The text body of the article
-		self.image_desc = aImage_desc #string - A list of image descriptions - one entry per image
+class NewsArticle(Base):
+    __tablename__ = 'NewsArticles'
+    # Initializes standard parameters for the date object
+    article_id = Column(Integer, primary_key=True)  # Leave blank this will auto-generate
+    title = Column(String(50), index=True)  # string - The title of the article
+    source = Column(String(50), index=True)  # string - The source of the article
+    url = Column(VARCHAR(length=2083))  # string - Permanent link to the article
+    author = Column(String(50), index=True)  # string - The author of the article as a tuple (last, first)
+    text = Column(VARCHAR(6000))  # string - The text body of the article
 
-	#articles - list of article objects
-	#sourceName - text string of the articles source i.e. [article].source
-	@staticmethod
-	def dumpArticles(articles, sourceName):
-		with open("Headlines\{}Articles.dat".format(sourceName), "wb") as f:
-			pickle.dump(articles, f)
+    @staticmethod
+    def get_new_articles(self):
+        pass
 
-	@staticmethod
-	def loadArticles(sourceName):
-		with open("Headlines\{}Articles.dat".format(sourceName), "rb") as f:
-			return pickle.load(f)
+    @staticmethod
+    def update_table(self):
+        # session.bulk_save_objects(<list>)
+        # session.commit()
+        pass
 
-	@staticmethod
-	def dumpAllArticles():
-		BBCarts = bbc.retrieve_homepage_articles()
-		CNETarts = cnet.get_headlines()
-		HACKarts = hack.retrieve_homepage_articles()
-		REDarts = red.get_news_front_page_headlines()
+    @staticmethod
+    def get_articles_by_source(self):
+        pass
 
-		allArts = [BBCarts, CNETarts, HACKarts, REDarts]
-		for art in allArts:
-			dumpArticles(art, art[0].source)
+    @staticmethod
+    def get_all_articles(self):
+        pass
 
-dumpAllArticles()
+
+Base.metadata.create_all(engine)
