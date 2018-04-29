@@ -63,7 +63,14 @@ def run_entire_thing(espn_link):
                 return False
         return True
 
-    the_information = NewsArticle(get_title(),get_tags(),get_author_and_date()[1],
-                                  get_source(),get_url(),get_author_and_date()[0],
-                                  return_article_contents(),get_image_caption())
+    the_information = NewsArticle()
+    the_information.title = get_title()
+    the_information.source = get_source()
+    the_information.tags = get_tags()
+    the_information.text = return_article_contents()
+    the_information.date = get_author_and_date()[1]
+    the_information.author = get_author_and_date()[0]
+    the_information.image_desc = get_image_caption()
+    the_information.url = get_url()
+
     return the_information
