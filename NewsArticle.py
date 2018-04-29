@@ -3,6 +3,9 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, VARCHAR, Table, MetaData
 
+from flask import Flask, render_template
+from flask_ask import Ask, statement, question, session
+
 engine = create_engine(
     'mysql+mysqlconnector://UIUC.ADSA:uiucadsa123@adsascrape.cqnah55gg5pq.us-east-1.rds.amazonaws.com:3306/adsawebscrape')
 
@@ -35,7 +38,7 @@ class NewsArticle(Base):
     text = Column(VARCHAR(6000))  # string - The text body of the article
 
     @staticmethod
-    def get_new_articles(self):
+    def scrape_new_articles(self):
         pass
 
     @staticmethod
@@ -54,3 +57,34 @@ class NewsArticle(Base):
 
 
 Base.metadata.create_all(engine)
+
+app = Flask(__name__)
+ask = Ask(app, "/news")
+
+
+@app.route('/')
+def homepage():
+    return "Hello"
+
+
+@ask.launch
+def start_skill():
+    welcome_message = 'Hello there, would you like the news?'
+    return question(welcome_message)
+
+
+@ask.intent("YesIntent")
+def share_headlines():
+    headlines = NewsArticle.get_all_articles()
+    headline_msg = 'The current world news headlines are {}'.format(headlines)
+    return statement(headline_msg)
+
+
+@ask.intent("NoIntent")
+def no_intent():
+    bye_text = 'Okay... Bye.'
+    return statement(bye_text)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
