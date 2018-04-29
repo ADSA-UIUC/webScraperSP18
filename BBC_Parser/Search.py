@@ -22,6 +22,7 @@ from BBC_Parser.ParseSearchResult import *
     # Had to install:
     1) beautiful soup 4
     2) urllib
+    3) python-interface
 '''
 
 # http://money.cnn.com/author/kaya-yurieff/index.html
@@ -33,11 +34,14 @@ homepage_url = "http://www.bbc.com"
 def main():
     # url = create_url("elon musk", 2)
     # articles = get_search_result(get_url_soup(url))
-    articles =  get_homepage_articles(get_url_soup(homepage_url))
+    articles = get_homepage_articles(get_url_soup(homepage_url))
+    article_titles = []
     for article in articles:
-        print(article.title)
+        article_titles.append(article.title)
+    print(article_titles)
 
-
+def retrieve_homepage_articles():
+    return get_homepage_articles(get_url_soup(homepage_url));
 
 # Takes:
 # search string 
