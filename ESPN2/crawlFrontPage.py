@@ -3,6 +3,11 @@ import requests
 
 from NewsArticle import NewsArticle
 
+
+def __init__(self):
+    pass
+
+
 #does what it says
 def return_front_espn_headlines():
     list_of_headlines = {}
