@@ -3,11 +3,13 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, VARCHAR, Table, MetaData
 
-from ESPN import crawlFrontPage as espn_arts
+#from ESPN2 import crawlFrontPage as espn_arts
+#from Reddit import newsHeadlines as reddit_arts
 '''
 from flask import Flask, render_template
 from flask_ask import Ask, statement, question, session
 '''
+
 engine = create_engine(
     'mysql+mysqlconnector://UIUC.ADSA:uiucadsa123@adsascrape.cqnah55gg5pq.us-east-1.rds.amazonaws.com:3306/adsawebscrape')
 
@@ -39,7 +41,7 @@ class NewsArticle(Base):
     author = Column(VARCHAR(50), index=True)  # string - The author of the article as a tuple (last, first)
     text = Column(VARCHAR(6000))  # string - The text body of the article
 
-
+'''
 class Articles:
     @staticmethod
     def scrape_new_articles():
@@ -49,8 +51,8 @@ class Articles:
     def update_table():
     	arts = Articles.scrape_new_articles()
     	print(arts)
-    	session.bulk_save_objects(arts)
-    	session.commit()
+    	#session.bulk_save_objects(arts)
+    	#session.commit()
 
     @staticmethod
     def get_articles_by_source():
@@ -61,6 +63,7 @@ class Articles:
         pass
 
 Articles.update_table()
+'''
 '''
 app = Flask(__name__)
 ask = Ask(app, "/news")

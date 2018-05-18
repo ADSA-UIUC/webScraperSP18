@@ -2,7 +2,9 @@ from bs4 import BeautifulSoup
 import requests
 import datetime
 
-from NewsArticle import NewsArticle
+import sys
+sys.path.append('../components')
+import NewsArticle
 
 def __init__(self):
     pass
@@ -66,11 +68,11 @@ def run_entire_thing(espn_link):
     the_information = NewsArticle()
     the_information.title = get_title()
     the_information.source = get_source()
-    the_information.tags = get_tags()
-    the_information.text = return_article_contents()
-    the_information.date = get_author_and_date()[1]
-    the_information.author = get_author_and_date()[0]
-    the_information.image_desc = get_image_caption()
-    the_information.url = get_url()
+    # the_information.tags = get_tags()
+    # the_information.text = return_article_contents()
+    # the_information.date = get_author_and_date()[1]
+    # the_information.author = get_author_and_date()[0]
+    # the_information.image_desc = get_image_caption()
+    # the_information.url = get_url()
 
     return the_information
