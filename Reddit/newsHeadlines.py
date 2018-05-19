@@ -23,15 +23,14 @@ def get_homepage_articles():
     for i in data["data"]["children"]:
         the_data = i["data"]
         if "title" in the_data.keys():
-            new_article = NewsArticle()
-            new_article.title = the_data["title"]
+            new_article = NewsArticle(title=the_data["title"], source='Reddit')
             headlines.append(new_article)
 
     return headlines
 
 
 # return NewsArticle objects for results of a keyword search 
-def get_keyword_search_articles(self, keyword):
+def get_keyword_search_articles(keyword):
     pass
 
     # def main():
