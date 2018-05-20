@@ -7,6 +7,10 @@ import logging
 from flask import Flask, render_template
 from flask_ask import Ask, statement, question, session
 
+import sys
+sys.path.append('..')
+from Articles import Articles
+
 app = Flask(__name__)
 ask = Ask(app, "/")
 
@@ -17,20 +21,16 @@ def new_launch():
     welcome_msg = render_template("welcome")
     return question(welcome_msg)
 
-@ask.intent("GiveMeTopHeadlines")
-def get_headlines(NewsSource):
+@ask.intent("GiveMeTopHeadlines", convert={'news_Source': str})
+def get_headlines(news_Source):
+    headlines = Articles.get_headlines_by_source(news_Source)
     # here you can put a function call instead of the hard coded list
-    headlines = {
-            "cnn": ["One", "two", "three"],
-            "fox": ["uno", "dos", "tres"]
-            }
-    if NewsSource.lower() not in headlines:
-        msg = render_template("sorry", name=NewsSource)
+    if not headlines:
+        msg = render_template("sorry", name=news_Source)
         return question(msg)
-# or you could replace the 'headlines[NewsSource.lower()]' with a function call
-    msg = render_template("headlines", name=NewsSource,\
-            headlines=headlines[NewsSource.lower()])
-    return question(msg)
+    # or you could replace the 'headlines[news_Source.lower()]' with a function call
+    msg = render_template("headlines", name=news_Source, headlines=headlines)
+    return statement(msg)
 
 if __name__=="__main__":
     app.run(debug=True)

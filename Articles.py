@@ -10,9 +10,6 @@ from Reddit import newsHeadlines as reddit_arts
 from HackerNews import Search as hacker_arts
 from BBC_Parser import Search as bbc_arts
 
-
-__name__ = '__main__'
-
 engine = create_engine(
     'mysql+mysqlconnector://UIUC.ADSA:uiucadsa123@adsascrape.cqnah55gg5pq.us-east-1.rds.amazonaws.com:3306/adsawebscrape')
 
@@ -54,19 +51,21 @@ class Articles:
 
     @staticmethod
     def get_headlines_by_source(source):
+        source=str(source).lower()
         headlines = []
-        for headline in session.query(NewsArticle.title).filter(NewsArticle.source==source):
+        for headline in session.query(NewsArticle.title).\
+            filter(NewsArticle.source==source):
             headlines.append(headline)
         return headlines
     @staticmethod
     def get_all_headlines():
         return session.query(NewsArticle.title)
 
-def main():
-    #Articles.update_table(Articles.scrape_new_articles())
-    arts = Articles.get_headlines_by_source('Reddit')
-    for a in arts:
-        print(a)
+# def main():
+#     #Articles.update_table(Articles.scrape_new_articles())
+#     arts = Articles.get_headlines_by_source('Reddit')
+#     for a in arts:
+#         print(a)
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
