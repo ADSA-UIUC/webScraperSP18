@@ -1,13 +1,13 @@
 from bs4 import BeautifulSoup
 import requests
 
-from NewsArticle import NewsArticle
-
+import sys
+sys.path.append('..')
+import NewsArticle
 #does what it says
 def return_front_espn_headlines():
     list_of_headlines = {}
-    source = "https://espn.com"
-    espn = requests.get(source).text
+    espn = requests.get("https://espn.com").text
     soup = BeautifulSoup(espn, "html5lib")
 
     find_content = soup.find_all("div", class_ = "contentItem__contentWrapper")
@@ -16,7 +16,9 @@ def return_front_espn_headlines():
 
     list_of_objects = {}
     for headline in list_of_headlines:
-        temp = NewsArticle(headline,None,None,source,None,None,None,None)
+        temp = NewsArticle()
+        temp.title = headline
+        temp.source = "ESPN"
         list_of_headlines.append(temp)
 
     return list_of_objects

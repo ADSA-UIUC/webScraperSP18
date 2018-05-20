@@ -2,15 +2,16 @@ from bs4 import BeautifulSoup
 import requests
 import datetime
 
-from NewsArticle import NewsArticle
+import sys
+sys.path.append('../components')
+import NewsArticle
 
+def __init__(self):
+    pass
 
 def run_entire_thing(espn_link):
     espn = requests.get(espn_link).text
     soup = BeautifulSoup(espn, "html5lib")
-
-
-
 
     def get_source():
         return "ESPN"
@@ -27,13 +28,11 @@ def run_entire_thing(espn_link):
     def get_author_and_date():
         author_and_date = list()
         info = (soup.find_all("div",class_ = "article-meta")[0])
-
-        author = info.ul.li.contents[1]
-        print(author)
+        auth_info = (soup.find_all("div", class_= "author has-bio")[0])
+        author = auth_info.contents[0]
         date = info.span.span.string
         if(check_if_today(date)):
             date = datetime.date.today()
-
         to_return = (author,date)
         author_and_date.extend(to_return)
         return author_and_date
@@ -66,8 +65,14 @@ def run_entire_thing(espn_link):
                 return False
         return True
 
-    the_information = NewsArticle(get_title(),get_tags(),get_author_and_date()[1],
-                                  get_source(),get_url(),get_author_and_date()[0],
-                                  return_article_contents(),get_image_caption())
+    the_information = NewsArticle()
+    the_information.title = get_title()
+    the_information.source = get_source()
+    # the_information.tags = get_tags()
+    # the_information.text = return_article_contents()
+    # the_information.date = get_author_and_date()[1]
+    # the_information.author = get_author_and_date()[0]
+    # the_information.image_desc = get_image_caption()
+    # the_information.url = get_url()
+
     return the_information
-print(run_entire_thing("http://www.espn.com/boxing/story/_/id/22678784/golden-boy-espn-front-family-ronny-rios-looking-get-closer-title-opportunity"))

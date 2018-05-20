@@ -1,6 +1,7 @@
 import bs4
 import requests
 import json
+import pickle
 import datetime
 import urllib.parse
 from selenium import webdriver
@@ -8,6 +9,7 @@ import os
 from CNN_Parser.ParseSearchResult import *
 from CNN_Parser.ParseFullArticle import *
 from NewsArticle import NewsArticle
+
 '''
     Basc Information:
     1) This is a parser to parse a group of articles from CNN.com
@@ -35,9 +37,12 @@ def main():
     # Sets path used by selenium.
     # This will throw an error...
     os.environ["PATH"] = "/Users/alexandregeubelle/Desktop/Alexandre Geubelle/Coding/CNNParser"
-    browser = webdriver.Firefox()
+    #browser = webdriver.Firefox()
 
-    get_headlines(10, browser=browser)
+    headlines = get_front_page_headlines()
+    #NewsArticle.dumpArticles(headlines, "cnn")
+
+    #get_headlines(10, browser=browser)
     # To get info on a full article:
     # url = "http://money.cnn.com/2018/03/01/technology/elon-musk-china-infrastructure-tweet/index.html"
     # soup = get_url_soup(url, browser=browser)
@@ -50,10 +55,10 @@ def main():
     # To get recent headlines
     # parse_recent_headlines_by_search_term("Elon Musk", 25, browser)) # Most recent 25 headlines.
 
-    browser.quit()
+    #browser.quit()
 
 
-def get_front_page_headlines(num_headlines):
+def get_front_page_headlines(num_headlines=None):
     browser = webdriver.Firefox()
     headlines = get_headlines(num_headlines=num_headlines, browser=browser)
     browser.quit()
@@ -69,7 +74,11 @@ def get_headlines(num_headlines=None, browser=None):
     for h3_soup in soup.find_all("h3",{"class": "cd__headline"}):
         counter += 1
         headline = h3_soup.find("span", {"class":"cd__headline-text"}).get_text()
-        headlines.append(NewsArticle(aTitle=headline))
+
+        article = NewsArticle()
+        article.title = headline
+        print(article.title)
+        headlines.append(article)
         url = h3_soup.find("a")["href"]
         if "https://www.cnn.com" not in url:
             url = "https://www.cnn.com" + url

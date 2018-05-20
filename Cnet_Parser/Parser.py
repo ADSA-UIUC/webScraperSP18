@@ -29,11 +29,12 @@ from NewsArticle import NewsArticle
 
 base_search_url = "https://www.cnn.com/search/?"
 
-def main():
 
+def main():
     headlines = get_headlines()
-    for headline in headlines:
-        print(str(headline))
+    NewsArticle.dumpArticles(headlines, "cnet")
+    # for headline in headlines:
+    #     print(str(headline))
 
 
 def get_headlines(num_headlines=None):
