@@ -3,8 +3,9 @@ import requests
 import json
 import datetime
 import urllib.parse
+import sys
+sys.path.append('..')
 from NewsArticle import NewsArticle
-
 
 # class reddit_scraper:
 #     def __init__(self):
@@ -13,7 +14,7 @@ from NewsArticle import NewsArticle
 
 # return NewsArticle objects for articles on homepage
 # BAILEY CALL THIS FUNCTION
-def get_homepage_articles(self):
+def get_homepage_articles():
     headlines = list()
     subreddit = "all"
     url = "https://www.reddit.com/r/" + subreddit + "/hot.json"
@@ -22,15 +23,14 @@ def get_homepage_articles(self):
     for i in data["data"]["children"]:
         the_data = i["data"]
         if "title" in the_data.keys():
-            new_article = NewsArticle()
-            new_article.title = the_data["title"]
+            new_article = NewsArticle(title=the_data["title"], source='Reddit')
             headlines.append(new_article)
 
     return headlines
 
 
 # return NewsArticle objects for results of a keyword search 
-def get_keyword_search_articles(self, keyword):
+def get_keyword_search_articles(keyword):
     pass
 
     # def main():

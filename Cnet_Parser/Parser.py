@@ -1,9 +1,8 @@
 import bs4
 import requests
-import json
-import datetime
 import urllib.parse
-
+import sys
+sys.path.append('..')
 from NewsArticle import NewsArticle
 
 '''
@@ -29,12 +28,11 @@ from NewsArticle import NewsArticle
 
 base_search_url = "https://www.cnn.com/search/?"
 
-
+__name__='__main__'
 def main():
     headlines = get_headlines()
-    NewsArticle.dumpArticles(headlines, "cnet")
-    # for headline in headlines:
-    #     print(str(headline))
+    for headline in headlines:
+        print(str(headline))
 
 
 def get_headlines(num_headlines=None):

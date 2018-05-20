@@ -2,7 +2,7 @@ import datetime
 
 from NewsArticle import NewsArticle
 
-def get_homepage_articles(soup):
+def retrieve_homepage_articles(soup):
     homepage_headline_class_tag = "storylink"
 
     headlines = soup.find_all("a", {"class": homepage_headline_class_tag})

@@ -1,0 +1,1 @@
+from HackerNews import ParseSearchResult, Search

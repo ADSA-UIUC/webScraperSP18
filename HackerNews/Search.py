@@ -1,10 +1,9 @@
 import urllib.parse
 import requests
-import json
-import datetime
-import os
 import bs4
-import NewsArticle
+import sys
+sys.path.append('..')
+from NewsArticle import NewsArticle
 
 from HackerNews.ParseSearchResult import *
 
@@ -23,20 +22,16 @@ from HackerNews.ParseSearchResult import *
     1) beautiful soup 4
     2) urllib
 '''
-
-# http://money.cnn.com/author/kaya-yurieff/index.html
-# https://www.cnn.com/profiles/alanna-petroff
-
-
 homepage_url = "https://news.ycombinator.com/"
 
-def main():
-    articles = get_homepage_articles(get_url_soup(homepage_url))
-    article_titles = []
-    for article in articles:
-        article_titles.append(article.title)
-    print(article_titles)
-
+# def main():
+#     articles = get_homepage_articles(get_url_soup(homepage_url))
+#     article_titles = []
+#     for article in articles:
+#         article_titles.append(article.title)
+#     print(article_titles)
+# if __name__ == '__main__':
+#     main()
 
 # # Takes:
 # # search string
@@ -48,8 +43,8 @@ def main():
 #
 #     return base_search_url + urllib.parse.urlencode(params)
 
-def retrieve_homepage_articles():
-    return get_homepage_articles(get_url_soup(homepage_url))
+def get_homepage_articles():
+    return retrieve_homepage_articles(get_url_soup(homepage_url))
 
 def get_url_soup(url, browser=None):
     if browser is None:
@@ -64,6 +59,3 @@ def get_url_soup(url, browser=None):
         browser.get(url)
         soup = bs4.BeautifulSoup(browser.page_source, "html.parser")
         return soup
-
-if __name__ == '__main__':
-    main()

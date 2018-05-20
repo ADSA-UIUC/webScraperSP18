@@ -26,6 +26,3 @@ class theGuardian :
 			print ("\n")
 
 		print (self.headlineList)
-
-a=theGuardian()
-a.returnHeadlines()
