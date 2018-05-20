@@ -1,0 +1,5 @@
+welcome: Hello, you can ask me for headlines from a news source. Ready?
+
+headlines: Here are the headlines from {{name}}, {{ headlines|join(", ")}}. Do you want any more?
+
+sorry: Sorry, I do not know {{name}}. Would you like a different source?
