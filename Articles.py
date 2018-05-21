@@ -22,7 +22,7 @@ metadata = MetaData(engine, reflect=True)
 if len(metadata.tables) == 0:
     Table('NewsArticles', metadata,
           Column('article_id', Integer, primary_key=True),
-          Column('title', VARCHAR(50), index=True),
+          Column('title', VARCHAR(200), index=True),
           Column('source', VARCHAR(50), index=True),
           Column('url', VARCHAR(length=2083)),
           Column('author', VARCHAR(50), index=True),
@@ -44,10 +44,11 @@ class Articles:
 
     @staticmethod
     def update_table(articles):
-        # for a in articles:
-        #     print(a.title)
-    	session.add_all(articles)
-    	session.commit()
+        print("{} rows deleted".format(session.query(NewsArticle).delete()))
+        session.commit()
+        for art in articles:
+            session.add(art)
+        session.commit()
 
     @staticmethod
     def get_headlines_by_source(source):
@@ -55,17 +56,18 @@ class Articles:
         headlines = []
         for headline in session.query(NewsArticle.title).\
             filter(NewsArticle.source==source):
-            headlines.append(headline)
+            headlines.append(headline.title)
         return headlines
+
     @staticmethod
     def get_all_headlines():
         return session.query(NewsArticle.title)
 
-# def main():
-#     #Articles.update_table(Articles.scrape_new_articles())
-#     arts = Articles.get_headlines_by_source('Reddit')
-#     for a in arts:
-#         print(a)
+def main():
+    Articles.update_table(Articles.scrape_new_articles())
+    # arts = Articles.get_headlines_by_source('Reddit')
+    # for a in arts:
+    #     print(a.title)
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()

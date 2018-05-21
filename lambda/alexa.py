@@ -29,7 +29,7 @@ def get_headlines(news_Source):
         msg = render_template("sorry", name=news_Source)
         return question(msg)
     # or you could replace the 'headlines[news_Source.lower()]' with a function call
-    msg = render_template("headlines", name=news_Source, headlines=headlines)
+    msg = render_template("headlines", name=news_Source, headlines=headlines[:10])
     return statement(msg)
 
 if __name__=="__main__":
